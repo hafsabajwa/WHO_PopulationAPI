@@ -3,24 +3,17 @@ import "./style.css";
 
 function Table(props) {
 
-  let [currentPage, setCurrentPage] = useState(props.pageNumber); //Default = Page 1
-  const [pageSize, setPageSize] = useState(props.pageSize); // Default Page size 10
-
+  let [currentPage, setCurrentPage] = useState(props.pageNumber); 
+  const [pageSize, setPageSize] = useState(props.pageSize); 
   if (!props.apiData.results) {
-    // If the API request isn't completed return "loading...""
+    
     return <p>Loading...</p>;
   } else {
-    // Write your code here:
-
-
-    let result = props.apiData.results;
-    // Logic for displaying current Countries 
-   
+    let result = props.apiData.results; 
     let last = currentPage * props.pageSize;
     let currentCountries = result.slice(0, last); 
-
     const renderRows = currentCountries.map((list, i) => {
-      return ( //setting key with index i
+      return ( 
         <tr key={i}>             
           <td>{list.Country}</td>
           <td>{list.Continent}</td>
@@ -29,11 +22,7 @@ function Table(props) {
         </tr>
       );
     });
-
-   
-   
-
-    return (
+  return (
       <>
         <table style={{ width: "100%" }}>
           <thead>
